@@ -6,7 +6,7 @@ import UserDropdown from "../Cards/UserDropdown";
 
 export default function Sidebar()
 {
-  const [collapseShow, setCollapseShow] = useState('hidden')
+  const [collapseShow, setCollapseShow] = useState('hidden');
 
   return(
     <nav className="md:left-0 md:block md:fixed md:top-0 md:bottom-0 md:overflow-y-auto md:flex-row md:flex-nowrap md:overflow-hidden shadow-xl bg-white flex flex-wrap items-center justify-between relative md:w-64 z-10 py-4 px-6">
@@ -77,7 +77,10 @@ export default function Sidebar()
             {/* Navigation */}
             <ul className="md:flex-col md:min-w-full flex flex-col list-none">
               <li className="items-center">
-                <Link className="flex items-center text-xs uppercase py-3 font-bold hover:text-green-500" to="/dashboard">
+                <Link 
+                  className="flex items-center text-xs uppercase py-3 font-bold hover:text-green-500" 
+                  to="/dashboard"
+                >
                   <FaDesktop className="mr-2" />
                   Dashboard
                 </Link>
@@ -91,7 +94,7 @@ export default function Sidebar()
               </li>
 
               <li className="items-center">
-                <Link className="flex items-center text-xs uppercase py-3 font-bold hover:text-green-500" to="/penjualan">
+                <Link className="flex items-center text-xs uppercase py-3 font-bold hover:text-green-500" to="/pembelian">
                   <FaShoppingBasket className="mr-2" />
                   Pembelian
                 </Link>

@@ -6,6 +6,7 @@ export default {
   ],
   theme: {
     extend: {},
+    prefix: 'tw-', // untuk menghindari konflik antara Framework Tailwind CSS & React Bootstrap
   },
   plugins: [],
 }
