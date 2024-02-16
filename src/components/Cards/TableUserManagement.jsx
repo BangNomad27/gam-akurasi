@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
-import { FaPencil, FaTrash } from "react-icons/fa6";
+
+// icons
+import { FaPencil } from "react-icons/fa6";
 import { BiDetail } from "react-icons/bi";
-import { IoMdAdd } from "react-icons/io";
+
+// fetching with axios
 import axios from 'axios';
+
+import ModalAddUser from "../Modal/ModalAddUser";
+import BtnDeleteUser from "../Button/BtnDeleteUser";
 
 export default function TableUserManagement()
 {
@@ -30,6 +36,13 @@ export default function TableUserManagement()
       });
   }, []);
 
+  const handleDeleteUser = (deletedUserId) => {
+    // Update the state or perform any other actions after user deletion
+    const updatedUsers = users.filter(user => user.user_id !== deletedUserId);
+    setUsers(updatedUsers);
+  };
+
+
   if (loading) {
     // You can replace this with a loading spinner or any other loading indicator
     return <p>Loading sebentar</p>; 
@@ -45,10 +58,9 @@ export default function TableUserManagement()
               <h3 className="font-semibold text-lg py-3">
                 User Management
               </h3>
-              <button className="bg-blue-600 hover:bg-blue-500 font-bold uppercase text-xs px-4 py-2 rounded shadow outline-none focus:outline-none mr-2 mb-3 text-white flex items-center" type="button">
-                <span className="mr-3">Tambah</span>
-                <IoMdAdd />
-              </button>
+
+              {/* Add Button */}
+              <ModalAddUser />
             </div>
           </div>
 
@@ -104,9 +116,8 @@ export default function TableUserManagement()
                         <button className="bg-yellow-400 hover:bg-yellow-300 font-bold uppercase text-xs px-4 py-4 rounded-full shadow outline-none focus:outline-none mr-2" type="button">
                           <FaPencil />
                         </button>
-                        <button className="bg-red-600 hover:bg-red-500 font-bold uppercase text-xs px-4 py-4 rounded-full shadow outline-none focus:outline-none mr-2" type="button">
-                          <FaTrash />
-                        </button>
+                        
+                        <BtnDeleteUser userId={user.user_id} onDelete={handleDeleteUser} />
                       </div>
                     </td>
                   </tr>
